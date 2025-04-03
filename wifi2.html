@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>连接 QUT-POL WiFi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { font-family: -apple-system, sans-serif; padding: 20px; text-align: center; }
+        .wifi-box { 
+            background: #f5f5f5; 
+            padding: 15px; 
+            border-radius: 10px; 
+            margin: 20px 0;
+            text-align: left;
+        }
+        .ios-steps {
+            background: #e8f4ff;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        button { 
+            background: #007AFF; 
+            color: white; 
+            border: none; 
+            padding: 12px 24px; 
+            border-radius: 8px; 
+            font-size: 16px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>连接 QUT-POL WiFi</h1>
+    
+    <div class="wifi-box">
+        <p><strong>WiFi 名称:</strong> QUT-POL</p>
+        <p><strong>账号:</strong> 202323010261</p>
+        <p><strong>密码:</strong> 15732919567Zb!</p>
+    </div>
+
+    <div class="ios-steps">
+        <h3>请按以下步骤操作：</h3>
+        <p>1. 点击下方按钮复制密码</p>
+        <p>2. 手动打开 <strong>「设置」→「WiFi」</strong></p>
+        <p>3. 选择 <strong>QUT-POL</strong> 并粘贴密码</p>
+    </div>
+
+    <button onclick="copyPassword()">复制密码</button>
+
+    <script>
+        function copyPassword() {
+            const password = "15732919567Zb!";
+            navigator.clipboard.writeText(password)
+                .then(() => alert("密码已复制！请前往WiFi设置粘贴"))
+                .catch(() => alert("复制失败，请手动记下密码"));
+        }
+    </script>
+</body>
+</html>
