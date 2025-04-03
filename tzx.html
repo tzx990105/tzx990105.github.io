@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>给tzx的思念</title>
+    <style>
+        body {
+            background-color: #ffe6f2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', 'Microsoft YaHei', sans-serif;
+            overflow: hidden;
+        }
+        .message-container {
+            text-align: center;
+            z-index: 10;
+        }
+        .message {
+            font-size: 4em;
+            color: #ff1493;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            animation: bounce 1.5s infinite alternate;
+        }
+        .kiss {
+            font-size: 3em;
+            color: #ff69b4;
+            animation: spin 2s infinite;
+            display: inline-block;
+        }
+        .love {
+            font-size: 3em;
+            color: #ff1493;
+            animation: pulse 1s infinite alternate;
+        }
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-20px); }
+        }
+        @keyframes spin {
+            0% { transform: rotate(-15deg); }
+            50% { transform: rotate(15deg); }
+            100% { transform: rotate(-15deg); }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+        .hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        .heart {
+            position: absolute;
+            color: #ff69b4;
+            animation: float 5s ease-in-out infinite;
+            opacity: 0.7;
+        }
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0.7; }
+            100% { transform: translateY(-150px) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="message-container">
+        <div class="message">tzx好想你</div>
+        <div class="kiss">mua~</div>
+        <div class="love">爱你 ❤</div>
+    </div>
+    
+    <div class="hearts" id="hearts"></div>
+    
+    <script>
+        // 创建漂浮的爱心
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts');
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤';
+            heart.className = 'heart';
+            
+            // 随机位置和大小
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = (Math.random() * 20 + 80) + 'vh';
+            heart.style.fontSize = (Math.random() * 30 + 20) + 'px';
+            heart.style.animationDuration = (Math.random() * 4 + 3) + 's';
+            
+            heartsContainer.appendChild(heart);
+            
+            // 移除爱心元素以避免内存泄漏
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+        
+        // 每隔一段时间创建新的爱心
+        setInterval(createHearts, 300);
+        
+        // 点击页面任意处也创建爱心
+        document.addEventListener('click', function() {
+            for(let i = 0; i < 5; i++) {
+                setTimeout(createHearts, i * 100);
+            }
+        });
+    </script>
+</body>
+</html>
